@@ -6,4 +6,4 @@
 
 训练框架
 ---
-[1.搭建一个框架的通用流程](https://github.com/ZM-Zhou/TheWaytoBigBrother/example_project/readme.md)
+[1.搭建一个框架的通用流程](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/example_project)
