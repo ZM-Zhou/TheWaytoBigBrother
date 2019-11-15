@@ -12,5 +12,6 @@
 
 pytorch学习记录
 ---
+[0.python相关操作](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/about_python.md)<br>
 [1.num_workers相关](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/about_num_workers.md)<br>
 [2.]
