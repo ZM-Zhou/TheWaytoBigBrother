@@ -14,7 +14,7 @@
 pytorch学习记录
 ---
 [0.python相关操作](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/about_python.md)<br>
-[1.pytorch查看GPU情况](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/pytorch_GPU.md)  
+[1.pytorch的GPU训练](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/pytorch_GPU.md)  
 [2.num_workers相关](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/about_num_workers.md)<br>
-[3.pytorch学习率的进阶设置](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/more_about_learning_rate.md)
+[3.pytorch的学习率和优化器](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/more_about_learning_rate.md)
 
