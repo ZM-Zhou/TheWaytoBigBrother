@@ -6,7 +6,7 @@ optim.SGD([{'params': model.base.parameters()},
            {'params': model.classifier.parameters(), 'lr': 1e-3}], 
           lr=1e-2, momentum=0.9)
 ```  
-可以看到优化器的第一个参数可以传入一个字典list（注意，就算只有一个字典，也需要将其包在一个list中！！！），字典中的'params'对应应用该学习率的参数，'lr'对应学习率。若不设置'lr'则使用优化器lr参数传入的学习率。  
+可以看到优化器的第一个参数可以传入一个字典list（注意，就算只有一个字典，也需要将其包在一个list中！！！），字典中的'params'对应应用该学习率的参数，'lr'对应学习率。若不设置'lr'则使用优化器lr参数传入的学习率。<br>
 为了获取网络的部分变量，组成需要的list，我们可以配合正则表达式来进行截取，例如：  
 ```
 for param in self.named_parameters():
@@ -19,9 +19,9 @@ for param in self.named_parameters():
 
 还可以应用于统计模型的可训练参数：  
 ```
-def get_parameter_number(net):    
-    total_num = sum(p.numel() for p in net.parameters())    
-    trainable_num = sum(p.numel() for p in net.parameters() if p.requires_grad)    
+def get_parameter_number(net):
+    total_num = sum(p.numel() for p in net.parameters())
+    trainable_num = sum(p.numel() for p in net.parameters() if p.requires_grad)
     return {'Total': total_num, 'Trainable': trainable_num}
 
 ```
@@ -33,5 +33,5 @@ self.model_lr_scheduler = optim.lr_scheduler.StepLR(
 ```
 其中lr_scheduler允许在训练过程中调整学习率，需要注意的是，当使用`StepLR()`时，学习率的调整是每`step_size`调整一次，如果希望设置为在第`step_size`个epoch后调整，则只需将其`step()`方法放在epoch训练完之后即可。
 
-参考链接：
+参考链接：<br>
 https://blog.csdn.net/weixin_42926076/article/details/99678948
