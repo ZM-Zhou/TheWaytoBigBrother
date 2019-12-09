@@ -14,6 +14,8 @@ tensor：`tensor.to()`，需要注意的是pytorch的to()方法不仅可以输�
 array->list：`array.tolist()`<br>
 list->array：`x = np.array(x)`<br>
 
+有时候，tuple和list之间的转换也是需要的，这里可以直接使用强制类型转换`tuple(temp_list)`或`list(temp_tuple)`
+
 ### 关于张量复制与变形
 当需要对张量进行维度扩充来适应网络的输入要求，或者进行反转、复制实现某些功能的时候，在numpy和pytorch中有不同的实现方法。<br>
 对于numpy：<br>
@@ -67,10 +69,26 @@ numpy为张量提供了方便的反转方法，分别为左右反转`numpy.flipl
 参考连接：<br>
 https://blog.csdn.net/e01528/article/details/86067489
 
-### 关于plt的图片加载
+### 关于图片加载和显示
+使用plt自带的模块可以用以下方式进行读取
 ```
 import matplotlib.image as mpimg # mpimg 用于读取图片
 img = mpimg.imread('image/path') # 读取图片为np array格式
+```
+若使用PIL则读取方式变为
+```
+from PIL import Image
+import matplotlib.pyplot as plt
+pil_im = Image.open('1.jpg').convert("rgb") #读取图片为Image格式
+#图片显示仍需要借助plt
+plt.figure("dog")
+plt.imshow(pil_im)
+plt.show()
+```
+如果需要将Image格式变为np array格式，可以通过如下操作完成
+```
+np_im = np.array(pil_im)
+pil_im = Image.fromarray(np.uint8(np_im))
 ```
 
 ### 关于训练结果的对比输出
@@ -106,17 +124,17 @@ python 中的字典要求键值（key）是一个可哈希的类型，除了常�
 ### pyhon的面向对象
 python支持面向对象的编程方法，pytorch中网络的实现，数据集的构建很多需要借助类来完成，下面讨论一点python与面向对象编程相关的内容。  
 ##### 参数的传递
-其实这不仅是面向对象的问题，python中经常可以看到如下形式的参数传递方式：  
-`def function(arg,*args,**kwargs):`  
-这样的传递方式可以支持不定个数的参数传递。其中`arg`对应一个参数，也可以给其赋予有意义的名字，这与一般的参数传递是相同的。`*args`可以接收多个不带有键值的参数（即直接传入值），并以tuple形式传入函数。`**kwargs`可以接收多个带有键值的参数（即用key=value的形式传入的参数），并以dict形式传入函数。  
-这样的参数传递方式对于下面类的继承有很大的便利性。  
-参考链接：  
+其实这不仅是面向对象的问题，python中经常可以看到如下形式的参数传递方式：<br>
+`def function(arg,*args,**kwargs):`<br>
+这样的传递方式可以支持不定个数的参数传递。其中`arg`对应一个参数，也可以给其赋予有意义的名字，这与一般的参数传递是相同的。`*args`可以接收多个不带有键值的参数（即直接传入值），并以tuple形式传入函数。`**kwargs`可以接收多个带有键值的参数（即用key=value的形式传入的参数），并以dict形式传入函数。<br>
+这样的参数传递方式对于下面类的继承有很大的便利性。<br>
+参考链接：<br>
 https://www.cnblogs.com/yunguoxiaoqiao/p/7626992.html
 
 ##### 类的继承
-python的类对继承方式没有太多限制，这里暂不讨论多继承等问题，主要讨论用的较多的super()函数。  
-一般，在继承自其他类时，会在`__init__()`方法中加入如下语句：  
-`super([子类名], self).__init__()`  
+python的类对继承方式没有太多限制，这里暂不讨论多继承等问题，主要讨论用的较多的super()函数。<br>
+一般，在继承自其他类时，会在`__init__()`方法中加入如下语句：<br>
+`super([子类名], self).__init__()`<br>
 这是python用于解决多重继承的机制，其不仅可用于init，也可用于其他方法。super可以自动建立方法解析顺序表，防止在多重继承，尤其是钻石继承的时候出现类的冲突。上面的使用形式是python2.x的格式，在python3.x中可以直接使用`super().__init__()`进行调用，若父类有需要传递的参数，就可以用上述提到的多参数传递来实现。
 
 若需要对父类的方法进行重写，只需要在子类中直接对相同的方法做重新def即可，调用时默认调用子类的方法。
