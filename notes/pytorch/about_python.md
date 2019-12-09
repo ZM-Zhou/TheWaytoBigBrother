@@ -14,6 +14,8 @@ tensor：`tensor.to()`，需要注意的是pytorch的to()方法不仅可以输�
 array->list：`array.tolist()`<br>
 list->array：`x = np.array(x)`<br>
 
+有时候，tuple和list之间的转换也是需要的，这里可以直接使用强制类型转换`tuple(temp_list)`或`list(temp_tuple)`
+
 ### 关于张量复制与变形
 当需要对张量进行维度扩充来适应网络的输入要求，或者进行反转、复制实现某些功能的时候，在numpy和pytorch中有不同的实现方法。<br>
 对于numpy：<br>
@@ -67,10 +69,26 @@ numpy为张量提供了方便的反转方法，分别为左右反转`numpy.flipl
 参考连接：<br>
 https://blog.csdn.net/e01528/article/details/86067489
 
-### 关于plt的图片加载
+### 关于图片加载和显示
+使用plt自带的模块可以用以下方式进行读取
 ```
 import matplotlib.image as mpimg # mpimg 用于读取图片
 img = mpimg.imread('image/path') # 读取图片为np array格式
+```
+若使用PIL则读取方式变为
+```
+from PIL import Image
+import matplotlib.pyplot as plt
+pil_im = Image.open('1.jpg').convert("rgb") #读取图片为Image格式
+#图片显示仍需要借助plt
+plt.figure("dog")
+plt.imshow(pil_im)
+plt.show()
+```
+如果需要将Image格式变为np array格式，可以通过如下操作完成
+```
+np_im = np.array(pil_im)
+pil_im = Image.fromarray(np.uint8(np_im))
 ```
 
 ### 关于训练结果的对比输出

@@ -4,6 +4,7 @@
 连接到服务器后，可以使用<br>
 `lsb_release -a`命令查看服务器的Ubuntu版本<br>
 `cat /usr/local/cuda/version.txt`命令查看服务器的CUDA版本<br>
+`cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2`命令查看服务器CUDNN版本<br>
 `uname --m`命令可以查看系统是32位还是64位<br>
 了解服务器的基本情况后方便下面进行环境的配置
 
@@ -23,7 +24,16 @@
 `conda create -n [env_name] python=[version]`新建一个虚拟环境<br>
 之后在里面使用`conda install`或者`pip install`命令装所需的库即可
 
+### 镜像的添加
+有时候某些组件直接连接原网页下载，速度会很慢，这时候可以使用如下命令将清华镜像添加进来，通过镜像进行下载
+```
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+```
+
 参考连接：<br>
 https://www.jianshu.com/p/ad59b7d120ca<br>
-https://blog.csdn.net/xianglao1935/article/details/80510494
+https://blog.csdn.net/xianglao1935/article/details/80510494<br>
+https://blog.csdn.net/watermelon1123/article/details/88122020
 
