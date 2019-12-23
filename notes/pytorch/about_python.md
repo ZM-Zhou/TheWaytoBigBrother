@@ -69,57 +69,30 @@ numpy为张量提供了方便的反转方法，分别为左右反转`numpy.flipl
 参考连接：<br>
 https://blog.csdn.net/e01528/article/details/86067489
 
-### 关于图片加载和显示
-使用plt自带的模块可以用以下方式进行读取
-```
-import matplotlib.image as mpimg # mpimg 用于读取图片
-img = mpimg.imread('image/path') # 读取图片为np array格式
-```
-若使用PIL则读取方式变为
-```
-from PIL import Image
-import matplotlib.pyplot as plt
-pil_im = Image.open('1.jpg').convert("rgb") #读取图片为Image格式
-#图片显示仍需要借助plt
-plt.figure("dog")
-plt.imshow(pil_im)
-plt.show()
-```
-如果需要将Image格式变为np array格式，可以通过如下操作完成
-```
-np_im = np.array(pil_im)
-pil_im = Image.fromarray(np.uint8(np_im))
-```
-
-### 关于训练结果的对比输出
-在对网络进行训练之后，我们除了获得树数值上的结果，也需要产生一些可视化的结果。而且为了方便对比，常常需要将多组数据的结果一块显示，这时候可以使用pil来生成组合图片。<br>
-首先使生成一张所需大小的背景图片
-```
-import PIL.Image as pil
-new_img = pil.new('RGB', (pic_num*image_size[0] + 600, (model_num + 1)*image_size[1] + 150), (255, 255, 255))
-```
-之后，将所需的图片贴在对应位置即可
-```
-new_img.paste(im, (600 + idx * original_width, 150 + original_height + w_idx * original_height))
-```
-如果需要添加文字，则用相应模块可以完成
-```
-from PIL import ImageDraw
-import PIL.ImageFont as ImageFont
-
-draw = ImageDraw.Draw(new_img) 
-font = ImageFont.truetype('LiberationSans-Regular.ttf', 60)
-
-draw.text((50,150 + original_height / 2 + w_idx * original_height),\
-            args.net_list[index]+'\nepoch '+weights.split('_')[-1] , fill=(0,0,0), font=font)
-```
-
-参考链接：<br>
-https://www.jb51.net/article/154638.htm<br>
-https://blog.csdn.net/litao_243/article/details/79913379
-
 ### 字典（dict）与元组（tuple）
 python 中的字典要求键值（key）是一个可哈希的类型，除了常用的字符串和数字，元组也可以作为字典的键值。例如可以用`outputs[("disp", 0)]`来表示输出中scale值为0的视差图。需要注意的是，元组也具有可以直接相加的性质，但必须保证两侧的操作数都是元组，若想在其中加入一个元素，需要使用以下形式`tuple1 + ([elem],)`声明其是一个元组。
+
+### 列表的查找
+python提供了很方便的列表查找方法`list.index()`在index中填入要查找的元素，若列表中有这个元素，则返回其下标，否则弹出异常。同时，其还接受`start=, end=`两个可选参数，规定查找的范围。在程序中可以用如下方式使用
+```
+try:
+    idx = my_list.index(x):
+        print("{} is in {}".format(x, idx))
+except:
+    print("{} is not in list".format(x))
+```
+
+参考连接<br>
+https://www.runoob.com/python/att-list-index.html
+
+### 列表的排序
+python提供了`list.sort()`方法对列表进行排序，其默认将列表内容按升序排序。可以传入参数`reverse=True`则将按照降序排序。有时列表中包含的是一个元祖或另一个列表，则可以通过`lambda`来指定排序的键值。考虑list中元素为("string", loss)而需要按照loss排序的情况，则可以使用以下方式：
+```
+list.sort(key=lambda x:x[1], reverse=True)
+```
+
+参考连接<br>
+https://www.jianshu.com/p/05c113bf722d
 
 ### pyhon的面向对象
 python支持面向对象的编程方法，pytorch中网络的实现，数据集的构建很多需要借助类来完成，下面讨论一点python与面向对象编程相关的内容。  
