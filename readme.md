@@ -15,8 +15,10 @@ pytorch学习记录
 ---
 [0.python基础操作](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/about_python.md)<br>
 [1.python图像操作](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/python_and_images.md)<br>
-[2.pytorch的GPU训练](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/pytorch_GPU.md)<br>
-[3.num_workers相关](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/about_num_workers.md)<br>
-[4.pytorch与tensorboard](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/pytorch_with_tensorboard.md)<br>
-[4.pytorch的学习率和优化器](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/more_about_learning_rate.md)
+[2.pytorch函数小计](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/about_pytorch.md)<br>
+[3.pytorch的GPU训练](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/pytorch_GPU.md)<br>
+[4.num_workers相关](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/about_num_workers.md)<br>
+[5.pytorch与tensorboard](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/pytorch_with_tensorboard.md)<br>
+[6.pytorch的学习率和优化器](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/more_about_learning_rate.md)
+[7.pytorch的debug技巧](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/pytorch/pytorch_debug.md)<br>
 

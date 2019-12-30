@@ -2,7 +2,7 @@
 ===
 ### 关于维度交换和改变
 在数据操作过程中经常需要对数据的维度进行交换或者维度增加，从numpy和pytorch可以分别采用以下方法：<br>
-numpy：维度交换采用`transpose()`方法，传入参数为交换后的维度顺序，例：将一个NCHW的batch转换为NHWC，则使用`transpose(0, 2, 3, 1)`。<br>
+numpy：维度交换采用`transpose()`方法，传入参数为交换后的维度顺序，例：将一个NCHW的batch转换为NHWC，则使用`transpose(0, 2, 3, 1)`。扩展维度可以使用`np.newaxis`,例如将一个CHW的图片插入1CHW变为batch，则可以使用`img[np.newaxis, :, :, :]`<br>
 (pytorch) tensor：维度交换采用`permute()`方法，传入参数与numpy的transpose相同（需要注意的是tensor也有`transpose()`方法,但只能交换两个维度）；维度扩展采用`unsqueeze()`方法，传入参数为插入维度的编号，例：将一个CHW的图片变为1CHW的batch，则使用`unsquzzez(0)`。
 
 ### 关于数据类型转换
@@ -68,6 +68,12 @@ numpy为张量提供了方便的反转方法，分别为左右反转`numpy.flipl
 
 参考连接：<br>
 https://blog.csdn.net/e01528/article/details/86067489
+
+### 关于numpy的逻辑运算
+在生成mask的时候经常需要进行矩阵之间的逻辑运算，但`numpy`并不支持两个矩阵之间进行与/或这样的操作，因为其生成的值将会是有歧义的。而一般希望生成的mask也并不需要其生成一个值，而是需要对矩阵内每一个元素进行运算，这时候需要用到numpy的逻辑操作：`np.logical_or(m1, m2)`，同样也支持and not等常用逻辑。
+
+参考链接：<br>
+https://blog.csdn.net/jningwei/article/details/78651535
 
 ### 字典（dict）与元组（tuple）
 python 中的字典要求键值（key）是一个可哈希的类型，除了常用的字符串和数字，元组也可以作为字典的键值。例如可以用`outputs[("disp", 0)]`来表示输出中scale值为0的视差图。需要注意的是，元组也具有可以直接相加的性质，但必须保证两侧的操作数都是元组，若想在其中加入一个元素，需要使用以下形式`tuple1 + ([elem],)`声明其是一个元组。
