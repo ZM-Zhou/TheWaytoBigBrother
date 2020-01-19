@@ -24,4 +24,11 @@ https://zhuanlan.zhihu.com/p/39752167 <-Dataloader num_workers和pin_mem的选�
 https://zhuanlan.zhihu.com/p/66145913 <-使用预加载提速<br>
 https://zhuanlan.zhihu.com/p/53345706
 
+### ReLU中的inplace
+在`torch.nn.functional.ReLU()`中有`inplace=False`这一参数，其含义是ReLU将不对原tensor进行修改，而是将值复制一份进行修改。当需要节省运行内存的时候，可以将该参数设为`True`，即对tensor直接进行修改。
+
+参考链接：<br>
+https://www.cnblogs.com/CZiFan/p/10790765.html
+
+
 

@@ -75,6 +75,27 @@ https://blog.csdn.net/e01528/article/details/86067489
 参考链接：<br>
 https://blog.csdn.net/jningwei/article/details/78651535
 
+### 关于numpy的矩阵操作
+在做分割问题的评估的时候，以语义分割为例，可以用`numpy`矩阵相关的函数来完成，一个简易的流程如下。
+```
+#label实际上是一个对应gt和pre的二维矩阵，在这个矩阵的对角线上即pre = gt
+label = num_class * gt_label + pre_label
+#bincount函数可以将张量中的值做索引，比如count[10]就表示10这个数值在label中出现的次数
+count = np.bincount(label, minlength=num_class**2)
+#将其还原为一个矩阵的形式
+confusion_matrix = count.reshape(num_class, num_class)
+#计算像素正确率的时候，使用np.diag获取矩阵主对角线上的元素，即所有分类正确的像素，求和，除像素数即得到结果
+acc = np.diag(confusion_matrix).sum() / confusion_matrix.sum()
+#同理计算分类正确率，可以保留矩阵的一个维度，并且使用np.nanmean忽略可能存在的nan值，求最终结果
+class_acc = np.diag(confusion_matrix).sum() / confusion_matrix.sum(axis=1)
+class_acc = np.nanmean(class_acc)
+```
+
+参考链接：<br>
+https://blog.csdn.net/xlinsist/article/details/51346523<br>
+https://blog.csdn.net/AlanGuoo/article/details/79918931<br>
+https://blog.csdn.net/qq_35277038/article/details/80766746
+
 ### 字典（dict）与元组（tuple）
 python 中的字典要求键值（key）是一个可哈希的类型，除了常用的字符串和数字，元组也可以作为字典的键值。例如可以用`outputs[("disp", 0)]`来表示输出中scale值为0的视差图。需要注意的是，元组也具有可以直接相加的性质，但必须保证两侧的操作数都是元组，若想在其中加入一个元素，需要使用以下形式`tuple1 + ([elem],)`声明其是一个元组。
 

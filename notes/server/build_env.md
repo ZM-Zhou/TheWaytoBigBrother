@@ -80,8 +80,8 @@ sudo apt-get upgrade
 参考连接：<br>
 https://blog.csdn.net/mangobar/article/details/82218807 No1<br>
 https://www.kutu66.com/c/mutia_159615 No2<br>
-https://askubuntu.com/questions/893922/<br>ubuntu-16-04-gives-x-error-of-failed-request-badvalue-integer-parameter-out-o No2
-https://www.wandouip.com/t5i164068/ ->未尝试的修复方法，先标记一下<br>
+https://askubuntu.com/questions/893922 No2<br>
+https://www.wandouip.com/t5i164068/ No2->未尝试的修复方法，先标记一下<br>
 https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows?_ga=2.147819767.170615197.1577497952-826573085.1577497952#9 No3<br>
 https://blog.csdn.net/u013810296/article/details/86683559 No4<br>
 https://www.it610.com/article/2193203.htm No5<br>
