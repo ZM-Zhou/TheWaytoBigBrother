@@ -150,3 +150,21 @@ A = import_module('A')
 参考连接：<br>
 https://blog.csdn.net/weixin_30666401/article/details/97750378<br>
 https://blog.csdn.net/edward_zcl/article/details/88809212
+
+### python正则化匹配
+需要对字符串进行正则化匹配，python提供了`re`函数库可以完成，其中最常用的是`re.search()`方法，使用的方法如下：<br>
+`res = re.search([表达式], [待匹配字符串])`<br>
+表达式中最常用的语法为`.`，在默认模式下匹配除了`\n`的任意字符，更多的用法见参考资料。
+例如需要同时匹配`###`，`####`，`#####`这三种形式，且目标字符串不会在之后有更多的字符，则可以简单使用`###.`进行匹配。下面程序段完可以完成检测一行中是否是以上格式的功能。
+```
+for line in lines:
+    res = re.search('###.', line)
+    if res.group(0) is None:
+        print("No ###... in this line")
+    else:
+        print("found ###... in this line")
+```
+其中`res`中的`group()`方法可以返回结果中的匹配到的位置和长度。
+
+参考连接：<br>
+https://docs.python.org/zh-cn/3/library/re.html
