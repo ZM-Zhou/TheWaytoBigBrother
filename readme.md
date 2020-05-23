@@ -2,7 +2,8 @@
 ===
 作为一个非CS专业，入坑CV一年多，从一个啥啥都不会的小白，变成了大概知道自己在干嘛的小菜鸡。一年里面踩了不少坑，也见了一些稀奇古怪的报错和问题。想在这里做一个记录和简单梳理，希望能帮到有需要的人。<br>
 不得不说我并对整理并不太擅长，也没有能力像大佬们那样把所有东西写的那么透彻。基本是以能解决问题为目的，具体的内容都在相应的参考连接中。<br>
-不定期更新，也欢迎各路大佬进行批评和指导！
+不定期更新，也欢迎各路大佬进行批评和指导！<br>
+（尽量保持每周一更）
 
 服务器的使用
 ---
@@ -29,6 +30,13 @@ VS Code的初始化和配置<br>
 在服务器上运行程序的三种方式
 
 [3.同一个服务器中使用多个gcc, g++版本](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/server/multiple_gcc_g++.md)
+
+[4.利用Github进行代码版本管理](https://github.com/ZM-Zhou/TheWaytoBigBrother/tree/master/notes/server/github.md)<br>
+将在线代码库拉取到本地<br>
+分支操作<br>
+提交和拉取<br>
+版本回溯<br>
+合并提交
 
 pytorch学习记录
 ---
